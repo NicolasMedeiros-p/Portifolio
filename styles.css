@@ -1,6 +1,7 @@
 @font-face {
-    font-family: 'BRIGHTSIGHT02';
-    src: url('fonts/BRIGHTSIGHT02.otf') format('opentype');
+    font-family: 'Brother Typeface';
+    src: url('../fonts/BrotherTypeface.otf') format('opentype'),
+         url('../fonts/BrotherTypeface.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
@@ -88,7 +89,7 @@ body {
 }
 
 .name {
-    font-family: 'BRIGHTSIGHT02', serif;
+    font-family: 'Brother Typeface', serif;
     font-size: 1.8em;
     text-transform: capitalize;
     font-weight: bold;
