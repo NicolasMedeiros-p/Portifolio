@@ -4,7 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nícolas Medeiros - Portfólio</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Myriad+Sans+Serif:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Futura:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Futura', sans-serif;
+            transition: background-color 1s ease-in-out;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .profile-section {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .description-section {
+            width: 60%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 100%;
+            background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2016.17.23_c097d8c7.jpg') no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-bottom: 20px;
+            background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/Imagem%20do%20WhatsApp%20de%202025-03-04%20%C3%A0(s)%2014.09.33_32c17035%20(1)%20-%20Copia.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .portfolio-link {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            font-weight: normal;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+            align-self: flex-start;
+        }
+
+        .portfolio-link:hover {
+            background-color: gray;
+        }
+
+        .description-section p {
+            font-family: 'Myriad Sans Serif', sans-serif;
+            font-size: 1em;
+            font-style: normal;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-family: 'Host Grotesk', serif;
+            font-size: 1.8em;
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-family: 'Myriad Sans Serif', sans-serif;
+            font-size: 1em;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        .description-section h2 {
+            font-family: 'Futura', sans-serif;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+
+        .description-section .answer {
+            font-family: 'Futura', serif;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .contact {
+            text-align: left;
+            font-size: 0.7em;
+            margin-top: 20px;
+        }
+
+        .contact a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact a img {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="background-image"></div>
@@ -21,7 +153,7 @@
             <p>Meu portfólio inclui uma vasta gama de projetos. Sou apaixonado pelo que faço e sempre busco entregar o melhor resultado para meus clientes. Entre em contato:</p>
             <div class="contact">
                 <a href="https://wa.me/5582999485335" target="_blank">
-                    <img src="https://github.com/NicolasMedeiros-p/Portif-lio/raw/main/icons8-whatsapp-50.png" alt="WhatsApp" width="24" height="24">
+                    <img src="https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/icons8-whatsapp-50.png" alt="WhatsApp" width="24" height="24">
                     82 99948-5335
                 </a>
             </div>
