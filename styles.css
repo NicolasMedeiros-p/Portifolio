@@ -47,7 +47,7 @@ body {
     left: 0;
     width: 40%;
     height: 100%;
-    background: url('https://github.com/NicolasMedeiros-p/Portif-lio/raw/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2016.17.23_c097d8c7.jpg') no-repeat center center;
+    background: url('https://github.com/NicolasMedeiros-p/Portif-lio/blob/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2016.17.23_c097d8c7.jpg') no-repeat center center;
     background-size: cover;
     opacity: 0.2;
     transition: opacity 1s ease-in-out; /* Adiciona transição gradual */
@@ -59,7 +59,7 @@ body {
     border-radius: 50%;
     border: 3px solid white;
     margin-bottom: 20px;
-    background: url('https://github.com/NicolasMedeiros-p/Portif-lio/raw/main/Imagem%20do%20WhatsApp%20de%202025-03-04%20%C3%A0(s)%2014.09.33_32c17035%20(1)%20-%20Copia.jpg') no-repeat center center;
+    background: url('https://github.com/NicolasMedeiros-p/Portif-lio/blob/main/Imagem%20do%20WhatsApp%20de%202025-03-04%20%C3%A0(s)%2014.09.33_32c17035%20(1)%20-%20Copia.jpg') no-repeat center center;
     background-size: cover;
 }
 
