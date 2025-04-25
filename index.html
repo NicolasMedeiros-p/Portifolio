@@ -29,8 +29,6 @@
       top: 20px;
       right: 20px;
       z-index: 999;
-      display: flex;
-      gap: 10px;
     }
 
     .theme-select {
@@ -186,15 +184,19 @@
   </style>
 </head>
 <body class="dark-mode">
+  <!-- Botão de Tradutor no canto superior direito -->
   <div class="lang-select">
-    <div id="google_translate_element"></div>
+    <button onclick="changeLanguage()">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Translate_icon_%282019%29.svg" alt="Traduzir" width="30" height="30">
+    </button>
   </div>
 
-  <!-- Botão de Alterar Tema no lado oposto -->
+  <!-- Botão de Alterar Tema -->
   <div class="theme-select">
     <button onclick="toggleTheme()">Alternar Tema</button>
   </div>
 
+  <!-- Container principal -->
   <div class="container">
     <div class="profile-section">
       <div class="shockwave"></div>
@@ -218,61 +220,35 @@
     </div>
   </div>
 
-  <script>
+  <!-- Script para tradução do Google -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'pt',
+        includedLanguages: 'pt,en,es',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+
     function changeLanguage() {
-      var googleTranslateElementInit = function() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'pt',
-          includedLanguages: 'pt,en,es',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-      };
-      function changeLanguage() {
-  var script = document.createElement('script');
-  script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-  script.type = "text/javascript";
-  document.body.appendChild(script);
-
-  // Garantir que a função googleTranslateElementInit será chamada corretamente.
-  window.googleTranslateElementInit = function() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'pt',
-      includedLanguages: 'pt,en,es', // Você pode adicionar mais idiomas aqui
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-  };
-}
-      window.onload = () => {
-  changeLanguage();  // Certifique-se de chamar a função changeLanguage ao carregar a página
-  const shockwave = document.querySelector('.shockwave');
-  setTimeout(() => {
-    shockwave.style.display = 'none'; // Após 2 segundos, o efeito desaparece
-  }, 2000);
-};
-
-
-      var script = document.createElement('script');
-      script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-      document.body.appendChild(script);
+      if (!window.google || !google.translate) {
+        const script = document.createElement('script');
+        script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        document.body.appendChild(script);
+      } else {
+        googleTranslateElementInit();
+      }
     }
 
     function toggleTheme() {
       const body = document.body;
-      if (body.classList.contains('dark-mode')) {
-        body.classList.remove('dark-mode');
-        body.classList.add('light-mode');
-      } else {
-        body.classList.remove('light-mode');
-        body.classList.add('dark-mode');
-      }
+      body.classList.toggle('dark-mode');
+      body.classList.toggle('light-mode');
     }
+  </script>
 
-    window.onload = () => {
-      const shockwave = document.querySelector('.shockwave');
-      setTimeout(() => {
-        shockwave.style.display = 'none';
-      }, 2000); // Após 2 segundos, o efeito desaparece
-    };
-  </script> 
+  <!-- Widget do Google Tradutor -->
+  <div id="google_translate_element" style="display:none;"></div>
+
 </body>
 </html>
