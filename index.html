@@ -14,12 +14,13 @@
 
     body {
       font-family: 'Rubik', sans-serif;
-      background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portifolio/main/FUNDO.png') no-repeat center center fixed;
+      background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/FUNDO.png') no-repeat center center fixed;
       background-size: cover;
       color: #ffffff;
       padding: 60px 20px;
-      overflow-y: auto;
-      min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+      overflow-y: auto; /* Permite rolar a página */
+      min-height: 100vh; /* Garante que o corpo da página tenha altura mínima de 100% da tela */
     }
 
     .lang-select {
@@ -42,6 +43,7 @@
       height: 48px;
     }
 
+    /* Posicionar o botão de alterar tema no lado oposto */
     .theme-select {
       position: fixed;
       top: 20px;
@@ -77,7 +79,7 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portifolio/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2020.41.18_ab5f4c1e.jpg') no-repeat center center;
+      background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2020.41.18_ab5f4c1e.jpg') no-repeat center center;
       background-size: cover;
       position: relative;
       z-index: 2;
@@ -152,18 +154,17 @@
 
     .contact a img {
       margin-right: 10px;
-      transition: filter 0.3s ease;
-      width: 25px;
-      height: 25px;
+      filter: invert(0); /* Ajusta para o modo claro */
     }
 
+    /* Claro/escuro */
     body.light-mode {
       background-color: #ffffff;
       color: #333;
     }
 
     body.light-mode .contact a img {
-      content: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portifolio/main/icons8-whatsapp-50-black.png');
+      filter: invert(0); /* Ícone do WhatsApp em preto no tema claro */
     }
 
     body.dark-mode {
@@ -172,7 +173,7 @@
     }
 
     body.dark-mode .contact a img {
-      content: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portifolio/main/icons8-whatsapp-50-white.png');
+      filter: invert(1); /* Ícone do WhatsApp em branco no tema escuro */
     }
 
   </style>
@@ -184,6 +185,7 @@
     </button>
   </div>
 
+  <!-- Botão de Alterar Tema no lado oposto -->
   <div class="theme-select">
     <button onclick="toggleTheme()">Alternar Tema</button>
   </div>
@@ -201,7 +203,7 @@
 
       <div class="contact">
         <a href="https://wa.me/5582999485335" target="_blank">
-          <img src="https://raw.githubusercontent.com/NicolasMedeiros-p/Portifolio/main/icons8-whatsapp-50-black.png" alt="WhatsApp">
+          <img src="https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/icons8-whatsapp-50.png" alt="WhatsApp" width="24" height="24">
           82 99948-5335
         </a>
       </div>
@@ -227,6 +229,7 @@
       }
     }
 
+    // Remover o efeito da onda após o carregamento da página
     window.onload = () => {
       const shockwave = document.querySelector('.shockwave');
       setTimeout(() => {
