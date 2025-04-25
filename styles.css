@@ -129,3 +129,171 @@ body {
 .contact a img {
     margin-right: 10px;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portifolio/main/FUNDO.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #ffffff;
+  padding: 60px 20px;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+.lang-select {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  gap: 10px;
+}
+
+.lang-select button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.lang-select img {
+  width: 48px;
+  height: 48px;
+}
+
+.theme-select {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+}
+
+.theme-select button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1.2em;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.profile-section {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portifolio/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2020.41.18_ab5f4c1e.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  z-index: 2;
+}
+
+.shockwave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  animation: pulse 2s ease-out forwards;
+  z-index: 1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+.text-section {
+  width: 100%;
+  max-width: 800px;
+}
+
+.text-section h1 {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+}
+
+.text-section p {
+  font-size: 1.2em;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.portfolio-link {
+  display: inline-block;
+  margin-right: 15px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.portfolio-link:hover {
+  background-color: #555;
+}
+
+.contact {
+  margin-top: 30px;
+}
+
+.contact a {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.contact a img {
+  margin-right: 10px;
+  transition: filter 0.3s ease;
+  width: 25px;
+  height: 25px;
+}
+
+body.light-mode {
+  background-color: #ffffff;
+  color: #333;
+}
+
+body.light-mode .contact a img {
+  content: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portifolio/main/icons8-whatsapp-50-black.png');
+}
+
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #f1f1f1;
+}
+
+body.dark-mode .contact a img {
+  content: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portifolio/main/icons8-whatsapp-50-white.png');
+}
