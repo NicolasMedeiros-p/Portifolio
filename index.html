@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nícolas Medeiros - Portfólio</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Myriad+Sans+Serif:wght@400;700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Futura:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
     * {
       margin: 0;
@@ -16,28 +14,54 @@
     }
 
     body {
-      background-color: black;
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.5s, color 0.5s;
+      background-color: #111;
+      color: #eee;
+      scroll-behavior: smooth;
+    }
+
+    .dark-mode {
+      background-color: #111;
+      color: #eee;
+    }
+
+    .light-mode {
+      background-color: #fff;
+      color: #111;
+    }
+
+    .toggle-theme {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      background-color: #333;
       color: white;
-      font-family: 'Futura', sans-serif;
-      transition: background-color 1s ease-in-out;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
 
     .translate-container {
-      position: absolute;
+      position: fixed;
       top: 10px;
       right: 10px;
       z-index: 1000;
     }
 
-    .translate-container .goog-te-gadget {
-      font-family: 'Futura', sans-serif !important;
-      font-size: 14px;
-      color: black;
-      background-color: white;
-      border-radius: 5px;
-      padding: 8px 12px;
-      display: inline-block;
+    .google-button {
+      background-color: #333;
+      color: white;
+      padding: 8px 16px;
       border: none;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      cursor: pointer;
     }
 
     .container {
@@ -56,6 +80,17 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
+      animation: fadeIn 2s ease;
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2020.41.18_ab5f4c1e.jpg') no-repeat center center;
+      background-size: cover;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      animation: impact 1s ease;
     }
 
     .description-section {
@@ -64,123 +99,92 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-    }
-
-    .background-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 40%;
-      height: 100%;
-      background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2016.17.23_c097d8c7.jpg') no-repeat center center;
-      background-size: cover;
-      opacity: 0.2;
-      transition: opacity 1s ease-in-out;
-    }
-
-    .profile-img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 3px solid white;
-      margin-bottom: 20px;
-      background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2020.41.18_ab5f4c1e.jpg') no-repeat center center;
-      background-size: cover;
+      animation: fadeIn 3s ease;
     }
 
     .portfolio-link {
       margin-top: 20px;
       padding: 10px 20px;
-      background-color: white;
-      color: black;
-      font-weight: normal;
+      background-color: #333;
+      color: white;
+      font-weight: 500;
       text-decoration: none;
-      border-radius: 5px;
-      transition: 0.3s;
-      align-self: flex-start;
+      border-radius: 8px;
+      transition: background-color 0.3s;
     }
 
     .portfolio-link:hover {
-      background-color: gray;
-    }
-
-    .description-section p {
-      font-family: 'Myriad Sans Serif', sans-serif;
-      font-size: 1em;
-      font-style: normal;
-      font-weight: normal;
-      margin-bottom: 20px;
+      background-color: #555;
     }
 
     .name {
-      font-family: 'Host Grotesk', serif;
-      font-size: 1.8em;
-      text-transform: capitalize;
-      font-weight: bold;
+      font-size: 2em;
+      font-weight: 700;
+      margin-top: 16px;
     }
 
     .subtitle {
-      font-family: 'Myriad Sans Serif', sans-serif;
       font-size: 1em;
       font-style: italic;
-      font-weight: normal;
-    }
-
-    .description-section h2 {
-      font-family: 'Futura', sans-serif;
-      font-size: 0.8em;
-      margin-bottom: 10px;
-    }
-
-    .description-section .answer {
-      font-family: 'Futura', serif;
-      font-size: 0.9em;
-      font-weight: bold;
+      margin-bottom: 12px;
     }
 
     .contact {
-      text-align: left;
-      font-size: 0.7em;
+      font-size: 0.85em;
       margin-top: 20px;
     }
 
     .contact a {
-      color: white;
+      color: inherit;
       text-decoration: none;
       display: flex;
       align-items: center;
+      gap: 10px;
     }
 
-    .contact a img {
-      margin-right: 10px;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* Remove branding extra do Google */
-    .goog-logo-link,
-    .goog-te-gadget span {
-      display: none !important;
-    }
-    .goog-te-gadget {
-      color: transparent !important;
+    @keyframes impact {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
   </style>
 </head>
-<body>
-  <!-- Botão do Google Tradutor -->
-  <div class="translate-container" id="google_translate_element"></div>
+<body class="dark-mode">
+  <button class="toggle-theme" onclick="toggleTheme()">Alternar Tema</button>
 
-  <div class="background-image"></div>
+  <div class="translate-container">
+    <button class="google-button" id="google_translate_element">
+      <img src="https://www.gstatic.com/images/branding/product/1x/translate_48dp.png" width="20" height="20" alt="Translate Icon">
+      Traduzir
+    </button>
+  </div>
+
   <div class="container">
     <div class="profile-section">
       <div class="profile-img"></div>
-      <h1 class="name">Nícolas Medeiros</h1>
-      <p class="subtitle">Editor de Vídeo & Fotógrafo</p>
+      <div class="name">Nícolas Medeiros</div>
+      <div class="subtitle">Editor de Vídeo & Fotógrafo</div>
     </div>
     <div class="description-section">
-      <h2>👋 Quem sou eu?</h2>
-      <p class="answer">Sou fotógrafo há 2 anos e editor de vídeos com mais de 9 anos de experiência...</p>
-      <p>Especializado em videoaulas para plataformas de ensino superior, tenho ajudado instituições a criar conteúdo educativo de alta qualidade. Como fotógrafo, tenho como objetivo deixar meus clientes surpreendidos e realizados com minhas sessões. Fique à vontade para ver meu portfólio de fotos e de vídeos! Qualquer coisa é só chamar.</p>
-      <p>Meu portfólio inclui uma vasta gama de projetos. Sou apaixonado pelo que faço e sempre busco entregar o melhor resultado para meus clientes. Entre em contato:</p>
+      <p>Sou fotógrafo há 2 anos e editor de vídeos com mais de 9 anos de experiência...</p>
+      <p>Especializado em videoaulas para plataformas de ensino superior, tenho ajudado instituições a criar conteúdo educativo de alta qualidade...</p>
+      <p>Entre em contato:</p>
       <div class="contact">
         <a href="https://wa.me/5582999485335" target="_blank">
           <img src="https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/icons8-whatsapp-50.png" alt="WhatsApp" width="24" height="24">
@@ -192,7 +196,18 @@
     </div>
   </div>
 
-  <!-- Script do Google Tradutor -->
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+      } else {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+      }
+    }
+  </script>
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
