@@ -24,7 +24,6 @@
       position: relative;
     }
 
-    /* Alteração do botão de tradutor */
     .lang-select {
       position: fixed;
       top: 20px;
@@ -35,21 +34,14 @@
     }
 
     .lang-select button {
-      background-color: #2d2d2d;
-      color: #ffffff;
-      padding: 10px 20px;
-      border-radius: 20px;
+      background: transparent;
       border: none;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      font-size: 1em;
     }
 
     .lang-select img {
-      margin-right: 10px;
-      width: 30px;
-      height: 30px;
+      width: 48px;
+      height: 48px;
     }
 
     .theme-select {
@@ -60,11 +52,11 @@
     }
 
     .theme-select button {
-      background-color: #2d2d2d;
-      color: white;
-      font-size: 1.2em;
+      background: transparent;
       border: none;
       cursor: pointer;
+      color: white;
+      font-size: 1.2em;
     }
 
     .container {
@@ -76,27 +68,13 @@
       align-items: center;
       gap: 40px;
       position: relative;
-      z-index: 2;
-      opacity: 0;
-      animation: fadeIn 1s ease-in-out forwards;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      z-index: 2; /* Garante que o conteúdo fique acima da camada */
     }
 
     .profile-section {
       position: relative;
       width: 300px;
       height: 300px;
-      opacity: 0;
-      animation: fadeInImage 2s ease-in-out forwards;
-    }
-
-    @keyframes fadeInImage {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
     }
 
     .profile-img {
@@ -178,7 +156,7 @@
 
     .contact a img {
       margin-right: 10px;
-      filter: invert(0); 
+      filter: invert(0); /* Ajusta para o modo claro */
     }
 
     /* Claro/escuro */
@@ -188,7 +166,7 @@
     }
 
     body.light-mode .contact a img {
-      filter: invert(1); 
+      filter: invert(1); /* Ícone do WhatsApp em branco no modo claro */
     }
 
     body.dark-mode {
@@ -197,7 +175,7 @@
     }
 
     body.dark-mode .contact a img {
-      filter: invert(0); 
+      filter: invert(0); /* Ícone do WhatsApp em preto no modo escuro */
     }
 
     /* Camada de filtro para o fundo */
@@ -209,12 +187,12 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); 
+      background-color: rgba(0, 0, 0, 0.5); /* Escuro para o modo escuro, claro para o modo claro */
       z-index: 1;
     }
 
     body.light-mode::before {
-      background-color: rgba(255, 255, 255, 0.5); 
+      background-color: rgba(255, 255, 255, 0.5); /* Branco semitransparente no modo claro */
     }
 
   </style>
@@ -223,10 +201,10 @@
   <div class="lang-select">
     <button onclick="changeLanguage()">
       <img src="https://www.gstatic.com/images/branding/product/2x/translate_96dp.png" alt="Google Translate">
-      Traduzir
     </button>
   </div>
 
+  <!-- Botão de Alterar Tema no lado oposto -->
   <div class="theme-select">
     <button onclick="toggleTheme()">Alternar Tema</button>
   </div>
@@ -256,7 +234,17 @@
 
   <script>
     function changeLanguage() {
-      // lógica de idioma vai aqui
+      var googleTranslateElementInit = function() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'pt',
+          includedLanguages: 'pt,en,es', // Adicionando inglês e espanhol
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+      };
+
+      var script = document.createElement('script');
+      script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      document.body.appendChild(script);
     }
 
     function toggleTheme() {
@@ -265,16 +253,18 @@
         body.classList.remove('dark-mode');
         body.classList.add('light-mode');
       } else {
-        body.classList.remove('lightYou're a professional developer highly skilled in debugging. The user ran the textdoc's code, and an error was thrown.
-Please think carefully about how to fix the error, and then rewrite the textdoc to fix it.
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+      }
+    }
 
-- NEVER change existing test cases unless they're clearly wrong.
-- ALWAYS add more test cases if there aren't any yet.
-- ALWAYS ask the user what the expected behavior is in the chat if the code is not clear.
-
-
-# Error
-
-ReferenceError: Uncaught ReferenceError: toggleTheme is not defined
-
-Stack:
+    // Remover o efeito da onda após o carregamento da página
+    window.onload = () => {
+      const shockwave = document.querySelector('.shockwave');
+      setTimeout(() => {
+        shockwave.style.display = 'none';
+      }, 2000); // Após 2 segundos, o efeito desaparece
+    };
+  </script>
+</body>
+</html>
