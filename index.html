@@ -19,7 +19,21 @@
       color: #ffffff;
       padding: 60px 20px;
       transition: background-color 0.3s, color 0.3s;
-      overflow: hidden;
+      overflow-y: auto;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Sobreposição para opacidade do fundo */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: -1;
     }
 
     .lang-select {
@@ -42,7 +56,6 @@
       height: 48px;
     }
 
-    /* Posicionar o botão de alterar tema no lado oposto */
     .theme-select {
       position: fixed;
       top: 20px;
@@ -66,6 +79,8 @@
       flex-direction: column;
       align-items: center;
       gap: 40px;
+      opacity: 0;
+      transition: opacity 1s;
     }
 
     .profile-section {
@@ -145,7 +160,7 @@
     }
 
     .contact a {
-      color: #fff;
+      color: inherit;
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -172,7 +187,7 @@
     }
 
     body.dark-mode .contact a img {
-      filter: invert(1); /* Ícone do WhatsApp em preto no tema escuro */
+      filter: invert(1); /* Ícone do WhatsApp em branco no tema escuro */
     }
 
   </style>
@@ -184,12 +199,12 @@
     </button>
   </div>
 
-  <!-- Botão de Alterar Tema do lado oposto -->
+  <!-- Botão de Alterar Tema no lado oposto -->
   <div class="theme-select">
     <button onclick="toggleTheme()">Alternar Tema</button>
   </div>
 
-  <div class="container">
+  <div class="container" id="container">
     <div class="profile-section">
       <div class="shockwave"></div>
       <div class="profile-img"></div>
@@ -231,9 +246,11 @@
     // Remover o efeito da onda após o carregamento da página
     window.onload = () => {
       const shockwave = document.querySelector('.shockwave');
+      const container = document.getElementById('container');
       setTimeout(() => {
-        shockwave.style.display = 'none';
-      }, 2000); // Após 2 segundos, o efeito desaparece
+        shockwave.style.display = 'none'; // Esconde a onda
+        container.style.opacity = '1'; // Faz o conteúdo aparecer com fade-in
+      }, 2000); // Após 2 segundos, o efeito desaparece e o fade-in ocorre
     };
   </script>
 </body>
