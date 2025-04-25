@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nícolas Medeiros - Portfólio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
     * {
       margin: 0;
       padding: 0;
@@ -14,100 +13,124 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      transition: background-color 0.5s, color 0.5s;
-      background-color: #111;
-      color: #eee;
-      scroll-behavior: smooth;
+      font-family: 'Rubik', sans-serif;
+      background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/FUNDO.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffff;
+      padding: 60px 20px;
+      transition: background-color 0.3s, color 0.3s;
+      overflow: hidden;
     }
 
-    .dark-mode {
-      background-color: #111;
-      color: #eee;
-    }
-
-    .light-mode {
-      background-color: #fff;
-      color: #111;
-    }
-
-    .toggle-theme {
+    .lang-select {
       position: fixed;
-      top: 10px;
-      left: 10px;
-      z-index: 1000;
-      background-color: #333;
-      color: white;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .translate-container {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 1000;
-    }
-
-    .google-button {
-      background-color: #333;
-      color: white;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 6px;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
       display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
+      gap: 10px;
+    }
+
+    .lang-select button {
+      background: transparent;
+      border: none;
       cursor: pointer;
+    }
+
+    .lang-select img {
+      width: 48px;
+      height: 48px;
+    }
+
+    /* Posicionar o botão de alterar tema no lado oposto */
+    .theme-select {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 999;
+    }
+
+    .theme-select button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-size: 1.2em;
     }
 
     .container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 20px;
-      min-height: 100vh;
+      gap: 40px;
     }
 
     .profile-section {
-      width: 40%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      animation: fadeIn 2s ease;
+      position: relative;
+      width: 300px;
+      height: 300px;
     }
 
     .profile-img {
-      width: 180px;
-      height: 180px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2020.41.18_ab5f4c1e.jpg') no-repeat center center;
       background-size: cover;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-      animation: impact 1s ease;
+      position: relative;
+      z-index: 2;
     }
 
-    .description-section {
-      width: 60%;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      animation: fadeIn 3s ease;
+    .shockwave {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      animation: pulse 2s ease-out forwards;
+      z-index: 1;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+      }
+    }
+
+    .text-section {
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .text-section h1 {
+      font-size: 2.8em;
+      margin-bottom: 20px;
+    }
+
+    .text-section p {
+      font-size: 1.2em;
+      line-height: 1.8;
+      margin-bottom: 20px;
     }
 
     .portfolio-link {
-      margin-top: 20px;
+      display: inline-block;
+      margin-right: 15px;
+      margin-top: 10px;
       padding: 10px 20px;
       background-color: #333;
-      color: white;
-      font-weight: 500;
+      color: #fff;
       text-decoration: none;
       border-radius: 8px;
       transition: background-color 0.3s;
@@ -117,86 +140,83 @@
       background-color: #555;
     }
 
-    .name {
-      font-size: 2em;
-      font-weight: 700;
-      margin-top: 16px;
-    }
-
-    .subtitle {
-      font-size: 1em;
-      font-style: italic;
-      margin-bottom: 12px;
-    }
-
     .contact {
-      font-size: 0.85em;
-      margin-top: 20px;
+      margin-top: 30px;
     }
 
     .contact a {
-      color: inherit;
+      color: #fff;
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 10px;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .contact a img {
+      margin-right: 10px;
+      filter: invert(0); /* Ajusta para o modo claro */
     }
 
-    @keyframes impact {
-      0% {
-        transform: scale(0.5);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
+    /* Claro/escuro */
+    body.light-mode {
+      background-color: #ffffff;
+      color: #333;
     }
+
+    body.light-mode .contact a img {
+      filter: invert(0); /* Ícone do WhatsApp em preto no tema claro */
+    }
+
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #f1f1f1;
+    }
+
+    body.dark-mode .contact a img {
+      filter: invert(1); /* Ícone do WhatsApp em preto no tema escuro */
+    }
+
   </style>
 </head>
 <body class="dark-mode">
-  <button class="toggle-theme" onclick="toggleTheme()">Alternar Tema</button>
-
-  <div class="translate-container">
-    <button class="google-button" id="google_translate_element">
-      <img src="https://www.gstatic.com/images/branding/product/1x/translate_48dp.png" width="20" height="20" alt="Translate Icon">
-      Traduzir
+  <div class="lang-select">
+    <button onclick="changeLanguage()">
+      <img src="https://www.gstatic.com/images/branding/product/2x/translate_96dp.png" alt="Google Translate">
     </button>
+  </div>
+
+  <!-- Botão de Alterar Tema do lado oposto -->
+  <div class="theme-select">
+    <button onclick="toggleTheme()">Alternar Tema</button>
   </div>
 
   <div class="container">
     <div class="profile-section">
+      <div class="shockwave"></div>
       <div class="profile-img"></div>
-      <div class="name">Nícolas Medeiros</div>
-      <div class="subtitle">Editor de Vídeo & Fotógrafo</div>
     </div>
-    <div class="description-section">
+
+    <div class="text-section">
+      <h1>Nícolas Medeiros</h1>
       <p>Sou fotógrafo há 2 anos e editor de vídeos com mais de 9 anos de experiência...</p>
-      <p>Especializado em videoaulas para plataformas de ensino superior, tenho ajudado instituições a criar conteúdo educativo de alta qualidade...</p>
-      <p>Entre em contato:</p>
+      <p>Especializado em videoaulas para plataformas de ensino superior, tenho ajudado instituições a criar conteúdo educativo de alta qualidade. Como fotógrafo, meu objetivo é surpreender e satisfazer meus clientes com sessões fotográficas excepcionais. Sinta-se à vontade para explorar meu portfólio de fotos e vídeos! Qualquer dúvida, estou à disposição.</p>
+
       <div class="contact">
         <a href="https://wa.me/5582999485335" target="_blank">
           <img src="https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/icons8-whatsapp-50.png" alt="WhatsApp" width="24" height="24">
           82 99948-5335
         </a>
       </div>
+
       <a href="https://drive.google.com/drive/folders/1Z81CjM3bFVM4FDirOh_Jh3nauNm0h7cS?usp=sharing" class="portfolio-link" target="_blank">Ver Vídeos de Portfólio</a>
       <a href="http://instagram.com/nicolasofotografo/" class="portfolio-link" target="_blank">Ver Portfólio de Fotos</a>
     </div>
   </div>
 
   <script>
+    function changeLanguage() {
+      // lógica de idioma vai aqui
+    }
+
     function toggleTheme() {
       const body = document.body;
       if (body.classList.contains('dark-mode')) {
@@ -207,16 +227,14 @@
         body.classList.add('dark-mode');
       }
     }
+
+    // Remover o efeito da onda após o carregamento da página
+    window.onload = () => {
+      const shockwave = document.querySelector('.shockwave');
+      setTimeout(() => {
+        shockwave.style.display = 'none';
+      }, 2000); // Após 2 segundos, o efeito desaparece
+    };
   </script>
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'pt',
-        includedLanguages: 'en,es,pt',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
