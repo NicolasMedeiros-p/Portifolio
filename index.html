@@ -14,43 +14,14 @@
 
     body {
       font-family: 'Rubik', sans-serif;
+      background: url('https://github.com/NicolasMedeiros-p/Portifolio/blob/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2016.17.23_c097d8c7.jpg?raw=true') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffff;
       padding: 60px 20px;
       transition: background-color 0.3s, color 0.3s;
-      overflow-y: auto; /* Permite rolar a página */
-      min-height: 100vh; /* Garante que o corpo da página tenha altura mínima de 100% da tela */
-      position: relative; /* Necessário para o posicionamento do fundo */
-    }
-
-    /* Imagem de fundo */
-    .background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://github.com/NicolasMedeiros-p/Portifolio/blob/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2016.17.23_c097d8c7.jpg') no-repeat center center fixed;
-      background-size: cover;
-      z-index: -2; /* Fica atrás de tudo */
-    }
-
-    /* Camada de difusão com opacidade */
-    .background-layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1; /* Fica acima da imagem de fundo, mas atrás do conteúdo */
-      transition: background-color 0.3s, opacity 0.3s;
-    }
-
-    /* Estilos para o modo claro e escuro */
-    body.light-mode .background-layer {
-      background-color: rgba(255, 255, 255, 0.5); /* Camada branca semi-transparente */
-    }
-
-    body.dark-mode .background-layer {
-      background-color: rgba(0, 0, 0, 0.5); /* Camada preta semi-transparente */
+      overflow-y: auto;
+      min-height: 100vh;
+      position: relative;
     }
 
     .lang-select {
@@ -73,7 +44,6 @@
       height: 48px;
     }
 
-    /* Posicionar o botão de alterar tema no lado oposto */
     .theme-select {
       position: fixed;
       top: 20px;
@@ -97,6 +67,8 @@
       flex-direction: column;
       align-items: center;
       gap: 40px;
+      position: relative;
+      z-index: 2; /* Garante que o conteúdo fique acima da camada */
     }
 
     .profile-section {
@@ -194,7 +166,7 @@
     }
 
     body.light-mode .contact a img {
-      filter: invert(0); /* Ícone do WhatsApp em preto no tema claro */
+      filter: invert(1); /* Ícone do WhatsApp em branco no modo claro */
     }
 
     body.dark-mode {
@@ -203,15 +175,29 @@
     }
 
     body.dark-mode .contact a img {
-      filter: invert(1); /* Ícone do WhatsApp em branco no tema escuro */
+      filter: invert(0); /* Ícone do WhatsApp em preto no modo escuro */
+    }
+
+    /* Camada de filtro para o fundo */
+    body.light-mode::before,
+    body.dark-mode::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Escuro para o modo escuro, claro para o modo claro */
+      z-index: 1;
+    }
+
+    body.light-mode::before {
+      background-color: rgba(255, 255, 255, 0.5); /* Branco semitransparente no modo claro */
     }
 
   </style>
 </head>
 <body class="dark-mode">
-  <div class="background"></div> <!-- Imagem de fundo -->
-  <div class="background-layer"></div> <!-- Camada de difusão com opacidade -->
-
   <div class="lang-select">
     <button onclick="changeLanguage()">
       <img src="https://www.gstatic.com/images/branding/product/2x/translate_96dp.png" alt="Google Translate">
