@@ -227,6 +227,29 @@
           layout: google.translate.TranslateElement.InlineLayout.SIMPLE
         }, 'google_translate_element');
       };
+      function changeLanguage() {
+  var script = document.createElement('script');
+  script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+  script.type = "text/javascript";
+  document.body.appendChild(script);
+
+  // Garantir que a função googleTranslateElementInit será chamada corretamente.
+  window.googleTranslateElementInit = function() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'pt',
+      includedLanguages: 'pt,en,es', // Você pode adicionar mais idiomas aqui
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  };
+}
+      window.onload = () => {
+  changeLanguage();  // Certifique-se de chamar a função changeLanguage ao carregar a página
+  const shockwave = document.querySelector('.shockwave');
+  setTimeout(() => {
+    shockwave.style.display = 'none'; // Após 2 segundos, o efeito desaparece
+  }, 2000);
+};
+
 
       var script = document.createElement('script');
       script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
