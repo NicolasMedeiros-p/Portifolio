@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nícolas Medeiros - Portfólio</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Myriad+Sans+Serif:wght@400;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Futura:wght@400;700&display=swap');
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Myriad+Sans+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Futura:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'pt',
+                includedLanguages: 'en,es,pt',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -136,36 +150,50 @@
         .contact a img {
             margin-right: 10px;
         }
+
+        /* Estilo para o seletor de idiomas */
+        #google_translate_element {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
+    <!-- Seletor de idioma -->
+    <div id="google_translate_element"></div>
+
+    <!-- Imagem de fundo -->
     <div class="background-image"></div>
+
     <div class="container">
         <div class="profile-section">
             <div class="profile-img"></div>
             <h1 class="name">Nícolas Medeiros</h1>
             <p class="subtitle">Editor de Vídeo & Fotógrafo</p>
         </div>
+
         <div class="description-section">
             <h2>👋 Quem sou eu?</h2>
             <p class="answer">Sou fotógrafo há 2 anos e editor de vídeos com mais de 9 anos de experiência...</p>
-            <p> Especializado em videoaulas para plataformas de ensino superior, tenho ajudado instituições a criar conteúdo educativo de alta qualidade. Como fotógrafo tenho como objetivo deixar meus clientes surpreendidos e realizados com minhas sessões, fique a vontade para ver meu portifólio de fotos, e de vídeos!! Qualquer coisa é só chamar</p>
+            <p>Especializado em videoaulas para plataformas de ensino superior, tenho ajudado instituições a criar conteúdo educativo de alta qualidade. Como fotógrafo tenho como objetivo deixar meus clientes surpreendidos e realizados com minhas sessões, fique à vontade para ver meu portfólio de fotos e de vídeos! Qualquer coisa é só chamar.</p>
             <p>Meu portfólio inclui uma vasta gama de projetos. Sou apaixonado pelo que faço e sempre busco entregar o melhor resultado para meus clientes. Entre em contato:</p>
+            
             <div class="contact">
                 <a href="https://wa.me/5582999485335" target="_blank">
                     <img src="https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/icons8-whatsapp-50.png" alt="WhatsApp" width="24" height="24">
                     82 99948-5335
                 </a>
-                <p>(if you don't speak portuguese please activate the translator / Si no hablas portugués, por favor activa el traductor.) </p>
+                <p>(If you don't speak Portuguese, please activate the translator / Si no hablas portugués, por favor activa el traductor.)</p>
             </div>
+
             <a href="https://drive.google.com/drive/folders/1Z81CjM3bFVM4FDirOh_Jh3nauNm0h7cS?usp=sharing" class="portfolio-link" target="_blank">Ver Vídeos de Portfólio</a>
             <a href="http://instagram.com/nicolasofotografo/" class="portfolio-link" target="_blank">Ver Portfólio de Fotos</a>
         </div>
-         
-    </div>
-</body>
-</html>
-         
     </div>
 </body>
 </html>
