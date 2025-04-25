@@ -33,17 +33,6 @@
       gap: 10px;
     }
 
-    .lang-select button {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-    }
-
-    .lang-select img {
-      width: 48px;
-      height: 48px;
-    }
-
     .theme-select {
       position: fixed;
       top: 20px;
@@ -68,7 +57,7 @@
       align-items: center;
       gap: 40px;
       position: relative;
-      z-index: 2; /* Garante que o conteúdo fique acima da camada */
+      z-index: 2;
     }
 
     .profile-section {
@@ -194,14 +183,12 @@
     body.light-mode::before {
       background-color: rgba(255, 255, 255, 0.5); /* Branco semitransparente no modo claro */
     }
-
   </style>
 </head>
 <body class="dark-mode">
   <div class="lang-select">
-  <div id="google_translate_element"></div>
-</div>
-
+    <div id="google_translate_element"></div>
+  </div>
 
   <!-- Botão de Alterar Tema no lado oposto -->
   <div class="theme-select">
@@ -236,7 +223,7 @@
       var googleTranslateElementInit = function() {
         new google.translate.TranslateElement({
           pageLanguage: 'pt',
-          includedLanguages: 'pt,en,es', // Adicionando inglês e espanhol
+          includedLanguages: 'pt,en,es',
           layout: google.translate.TranslateElement.InlineLayout.SIMPLE
         }, 'google_translate_element');
       };
@@ -257,12 +244,12 @@
       }
     }
 
-    // Remover o efeito da onda após o carregamento da página
     window.onload = () => {
       const shockwave = document.querySelector('.shockwave');
       setTimeout(() => {
         shockwave.style.display = 'none';
       }, 2000); // Após 2 segundos, o efeito desaparece
     };
-  </script>
+  </script> 
 </body>
+</html>
