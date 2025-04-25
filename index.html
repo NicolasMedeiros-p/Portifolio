@@ -6,11 +6,7 @@
   <title>Nícolas Medeiros - Portfólio</title>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Rubik', sans-serif;
@@ -24,19 +20,14 @@
       position: relative;
     }
 
-    .lang-select {
+    .lang-select, .theme-select {
       position: fixed;
       top: 20px;
-      right: 20px;
       z-index: 999;
     }
 
-    .theme-select {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 999;
-    }
+    .lang-select { right: 20px; }
+    .theme-select { left: 20px; }
 
     .theme-select button {
       background: transparent;
@@ -88,14 +79,8 @@
     }
 
     @keyframes pulse {
-      0% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.7;
-      }
-      100% {
-        transform: translate(-50%, -50%) scale(2.5);
-        opacity: 0;
-      }
+      0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+      100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
     }
 
     .text-section {
@@ -103,11 +88,7 @@
       max-width: 800px;
     }
 
-    .text-section h1 {
-      font-size: 2.8em;
-      margin-bottom: 20px;
-    }
-
+    .text-section h1 { font-size: 2.8em; margin-bottom: 20px; }
     .text-section p {
       font-size: 1.2em;
       line-height: 1.8;
@@ -126,9 +107,7 @@
       transition: background-color 0.3s;
     }
 
-    .portfolio-link:hover {
-      background-color: #555;
-    }
+    .portfolio-link:hover { background-color: #555; }
 
     .contact {
       margin-top: 30px;
@@ -143,17 +122,16 @@
 
     .contact a img {
       margin-right: 10px;
-      filter: invert(0); /* Ajusta para o modo claro */
+      filter: invert(0);
     }
 
-    /* Claro/escuro */
     body.light-mode {
       background-color: #ffffff;
       color: #333;
     }
 
     body.light-mode .contact a img {
-      filter: invert(1); /* Ícone do WhatsApp em branco no modo claro */
+      filter: invert(1);
     }
 
     body.dark-mode {
@@ -162,10 +140,9 @@
     }
 
     body.dark-mode .contact a img {
-      filter: invert(0); /* Ícone do WhatsApp em preto no modo escuro */
+      filter: invert(0);
     }
 
-    /* Camada de filtro para o fundo */
     body.light-mode::before,
     body.dark-mode::before {
       content: '';
@@ -174,29 +151,33 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); /* Escuro para o modo escuro, claro para o modo claro */
       z-index: 1;
     }
 
     body.light-mode::before {
-      background-color: rgba(255, 255, 255, 0.5); /* Branco semitransparente no modo claro */
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    body.dark-mode::before {
+      background-color: rgba(0, 0, 0, 0.5);
     }
   </style>
 </head>
 <body class="dark-mode">
-  <!-- Botão de Tradutor no canto superior direito -->
+  <!-- Botão de Tradutor -->
   <div class="lang-select">
-    <button onclick="changeLanguage()">
+    <button onclick="loadGoogleTranslate()">
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Translate_icon_%282019%29.svg" alt="Traduzir" width="30" height="30">
     </button>
+    <div id="google_translate_element"></div>
   </div>
 
-  <!-- Botão de Alterar Tema -->
+  <!-- Botão de Tema -->
   <div class="theme-select">
     <button onclick="toggleTheme()">Alternar Tema</button>
   </div>
 
-  <!-- Container principal -->
+  <!-- Conteúdo -->
   <div class="container">
     <div class="profile-section">
       <div class="shockwave"></div>
@@ -220,19 +201,18 @@
     </div>
   </div>
 
-  <!-- Script para tradução do Google -->
+  <!-- Scripts -->
   <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'pt',
-        includedLanguages: 'pt,en,es',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+      body.classList.toggle('light-mode');
     }
 
-    function changeLanguage() {
-      if (!window.google || !google.translate) {
+    function loadGoogleTranslate() {
+      if (!document.querySelector('#google-translate-script')) {
         const script = document.createElement('script');
+        script.id = 'google-translate-script';
         script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
         document.body.appendChild(script);
       } else {
@@ -240,15 +220,13 @@
       }
     }
 
-    function toggleTheme() {
-      const body = document.body;
-      body.classList.toggle('dark-mode');
-      body.classList.toggle('light-mode');
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'pt',
+        includedLanguages: 'pt,en,es',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
     }
   </script>
-
-  <!-- Widget do Google Tradutor -->
-  <div id="google_translate_element" style="display:none;"></div>
-
 </body>
 </html>
