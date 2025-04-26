@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Rubik', sans-serif;
       background: url('https://github.com/NicolasMedeiros-p/Portifolio/blob/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2016.17.23_c097d8c7.jpg?raw=true') no-repeat center center fixed;
@@ -19,24 +18,20 @@
       min-height: 100vh;
       position: relative;
     }
-
     .lang-select, .theme-select {
       position: fixed;
       top: 20px;
       z-index: 999;
     }
-
     .lang-select { right: 20px; }
     .theme-select { left: 20px; }
-
-    .theme-select button {
+    .theme-select button, .lang-select button {
       background: transparent;
       border: none;
       cursor: pointer;
       color: white;
       font-size: 1.2em;
     }
-
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -48,53 +43,32 @@
       position: relative;
       z-index: 2;
     }
-
-    .profile-section {
-      position: relative;
-      width: 300px;
-      height: 300px;
-    }
-
+    .profile-section { position: relative; width: 300px; height: 300px; }
     .profile-img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       border-radius: 50%;
       background: url('https://raw.githubusercontent.com/NicolasMedeiros-p/Portif-lio/main/Imagem%20do%20WhatsApp%20de%202025-03-05%20%C3%A0(s)%2020.41.18_ab5f4c1e.jpg') no-repeat center center;
       background-size: cover;
       position: relative;
       z-index: 2;
     }
-
     .shockwave {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 300px;
-      height: 300px;
+      top: 50%; left: 50%;
+      width: 300px; height: 300px;
       transform: translate(-50%, -50%);
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255,255,255,0.2);
       animation: pulse 2s ease-out forwards;
       z-index: 1;
     }
-
     @keyframes pulse {
       0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
       100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
     }
-
-    .text-section {
-      width: 100%;
-      max-width: 800px;
-    }
-
+    .text-section { width: 100%; max-width: 800px; }
     .text-section h1 { font-size: 2.8em; margin-bottom: 20px; }
-    .text-section p {
-      font-size: 1.2em;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
+    .text-section p { font-size: 1.2em; line-height: 1.8; margin-bottom: 20px; }
     .portfolio-link {
       display: inline-block;
       margin-right: 15px;
@@ -106,78 +80,102 @@
       border-radius: 8px;
       transition: background-color 0.3s;
     }
-
     .portfolio-link:hover { background-color: #555; }
-
-    .contact {
-      margin-top: 30px;
-    }
-
+    .contact { margin-top: 30px; }
     .contact a {
       color: inherit;
       text-decoration: none;
       display: flex;
       align-items: center;
     }
-
-    .contact a img {
-      margin-right: 10px;
-      filter: invert(0);
+    .contact a img { margin-right: 10px; filter: invert(0); }
+    .gallery {
+      margin: 60px 0;
+      width: 100%;
+      position: relative;
+      z-index: 2;
     }
-
-    body.light-mode {
-      background-color: #ffffff;
-      color: #333;
+    .gallery .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
-
-    body.light-mode .contact a img {
-      filter: invert(1);
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s;
     }
-
-    body.dark-mode {
-      background-color: #1a1a1a;
-      color: #f1f1f1;
+    .gallery img:hover { transform: scale(1.05); }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 80px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
     }
-
-    body.dark-mode .contact a img {
-      filter: invert(0);
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 80vh;
     }
-
-    body.light-mode::before,
-    body.dark-mode::before {
-      content: '';
+    .modal-text {
+      color: #fff;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    body.light-mode { background-color: #ffffff; color: #333; }
+    body.light-mode .contact a img { filter: invert(1); }
+    body.dark-mode  { background-color: #1a1a1a; color: #f1f1f1; }
+    body.dark-mode .contact a img { filter: invert(0); }
+    /* Ajustes para a camada de fundo e tema */
+    .theme-layer {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      background: rgba(0, 0, 0, 0.4);
       z-index: 1;
+      transition: background 0.3s;
     }
-
-    body.light-mode::before {
-      background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    body.dark-mode::before {
-      background-color: rgba(0, 0, 0, 0.5);
+    .light-mode .theme-layer {
+      background: rgba(255, 255, 255, 0.7);
     }
   </style>
 </head>
+
 <body class="dark-mode">
-  <!-- Botão de Tradutor -->
+  <!-- Camada de fundo que muda com o tema -->
+  <div class="theme-layer"></div>
+
   <div class="lang-select">
-    <button onclick="loadGoogleTranslate()">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEsElEQVR4Ac2X1XrjRgBGi9f7AOX2KXq3zBQsMzN3mdkOLjMzhpk5ZmbmoOU4W27/akYZq47i0qK+7xiuzhkQPXBfHN8cjT+VVZQ055XeRF6JQC5PzgTZxSJZRQLLCuOlty0gqyRhInICEROomMHkPMuLBJbsGP5p48bWR25LgFQuDcgSA7BsgqzNvudvSwCRZpZnDliyY/DkbQlgUkbm0YsBlIKRX99/X/XobQ3I/jejJxQKLF5tn3XLAdlSsShnFEkDlvJ8fGgYOr0NwWAE0WiMJ0qJRCIIh8NphEIhitfrdej1zsfFACqTsu1GEipHAsMjcYramcCWa0kqZwGEujYDbDY3L40iFosRWARDEhQIBCxTBrARX+pKIB6PY5TH7ONg9nL0fzAWxxsHxlPyJQU3UXzZBZXKCI/H968DCKkAJmVsvZ6kMmeQw+cnx1PT/uXpcXxynP8vyikfHRhAX78eRqMFfn+AyDMHiMshBrDdzVDYhdF+cyYp2XQEcfSMcdS36qDTmWC12uDz+W4tYGiYgyfMpcn5qU+jSZeg8sUTlFxxQa02wmKxwW63o1uhQWNXX7o8UwATMQb5AG+ESxu1xslRDG5hdhQ2joopcrIMUXR2qaDWGGAwmnDg/FWsLD4Enz9A8fr8FH8gIA1gEka/TZB8e1Zcb8a6S8L+KO8fY3LKItkYXvm2CG+s3Im31uzA22t3Ud7dWID3NxfjvU3FeHdTEQ5eKifyvw/YdFWQuEIcvjiZTK33h8fG4QiIcSn5BBuOqHG1ogkV9S2oaelAbUs76lo78cnWUuw+ew1N3QqoDCZpABFM5lzHGBURrD4Ch9GJ/xc6ExI54ZODUVytbEF1UwfsdgccDgfq27rw9joZelVatv4ZA8go09hwOYleK4eBIZ5hDkp7AttvJKeUL5TxMyJLouRYOd5ctQudfUrYbHasKDqAzftOwOVykYsPEUsDBKGUxZORM9LFjAU8pZdt+HLrHqyQH8L+c9fw3no5epVqGkDw+/1UHgwGxQCJ6F+IpXKBTw5GUF3fgXfWyOlmvFBRB6fTmQpwu900QhoglUnFIhIxZRe/DLsS2HOqEq+v4M+GtTsgO3qOXBdoBAvwer3kYiUG/EspE2eUE+bzZK24ipLjl1HT3In3NsghO3KWbMq0AI/HIwZIRBmlmcVMTnhZZkdfvw4mkxV1bZ14f0MBdvIRDoeTBFB5esCuuCmzUCqWjlpk3s5xLNqZQHO7BlqtkZ4J9e3ddCau1TWxWUgPWLAx9Pi8bYOWhTsTmMyCqdghMn8Hl2LedoG5PPuuWqFWG0gAvR70qTRkBsheEANu9VizteP7mTlVmJH9F7KqsPDlSpRVKaAzWGC30wDG7Q14f8XlabPyapAitwaz82tx7lIPlCo9jCYLkZIIQloA4bY8Ub/7XX10dl4tKLm12He0EwqlDnq9CWazMAM2m40FsNPx9gWs29n5NZGT0W+Wt0Kh0PGbzwCj0QyLxULkaQGE2xrw/orGaUT+xZomdHeroVKR0Rv50UsDCCzAYLCYb9u75YotNY6ODiV6+1TQaMijmR4mkykVwbBarTRGpzNaZbKLz90Xb+Z/Apo8pHRw0e17AAAAAElFTkSuQmCC" alt="Traduzir" width="30" height="30">
-    </button>
+    <button onclick="loadGoogleTranslate()">🌐 Traduzir</button>
     <div id="google_translate_element"></div>
   </div>
 
-  <!-- Botão de Tema -->
   <div class="theme-select">
-    <button onclick="toggleTheme()">Alternar Tema</button>
+    <button onclick="toggleTheme()">🌙/☀️</button>
   </div>
 
-  <!-- Conteúdo -->
   <div class="container">
     <div class="profile-section">
       <div class="shockwave"></div>
@@ -201,59 +199,43 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script type="text/javascript">
+  <section class="gallery">
+    <div class="container">
+      <!-- Fotos verticais -->
+      <img src="https://github.com/NicolasMedeiros-p/Portifolio/blob/main/0cacc2cf-3401-45a1-adfc-22f5ec577979.jpg?raw=true">
+      <img src="https://github.com/NicolasMedeiros-p/Portifolio/blob/main/732e5e13-51a0-4ada-a18b-e6f2331e66b7.jpg?raw=true">
+      <img src="https://github.com/NicolasMedeiros-p/Portifolio/blob/main/73f9df7e-beb7-477f-b50f-13442f4650c7.jpg?raw=true">
+
+      <!-- Fotos horizontais -->
+      <img src="https://github.com/NicolasMedeiros-p/Portifolio/blob/main/7da691ba-e9b5-4215-b69b-79de6fe94b9f.jpg?raw=true">
+      <img src="https://github.com/NicolasMedeiros-p/Portifolio/blob/main/6a64735e-e4ed-4725-beb6-1bc7ab2f648b.jpg?raw=true">
+      <img src="https://github.com/NicolasMedeiros-p/Portifolio/blob/main/d87c4b2b-2556-43d1-b44b-fb45e0e3457b.jpg?raw=true">
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div class="modal-text"></div>
+  </div>
+
+  <script>
+    // Função de troca de tema
     function toggleTheme() {
       const body = document.body;
-      body.classList.toggle('dark-mode');
       body.classList.toggle('light-mode');
+      body.classList.toggle('dark-mode');
     }
 
+    // Função de tradução
     function loadGoogleTranslate() {
-      if (!document.querySelector('#google-translate-script')) {
-        const script = document.createElement('script');
-        script.id = 'google-translate-script';
-        script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-        document.body.appendChild(script);
-      } else {
-        googleTranslateElementInit();
-      }
-    }
-
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'pt',
-        includedLanguages: 'pt,en,es',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
+      new google.translate.TranslateElement({pageLanguage: 'pt'}, 'google_translate_element');
     }
   </script>
-  <!-- Scripts -->
-  <script type="text/javascript">
-    function toggleTheme() {
-      const body = document.body;
-      body.classList.toggle('dark-mode');
-      body.classList.toggle('light-mode');
-    }
 
-    function loadGoogleTranslate() {
-      if (!document.getElementById('google-translate-script')) {
-        var script = document.createElement('script');
-        script.id = 'google-translate-script';
-        script.type = 'text/javascript';
-        script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-        document.body.appendChild(script);
-      }
-    }
+  <!-- Google Translate API -->
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
 
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'pt',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-</body>
-</html>
 </body>
 </html>
